@@ -17,6 +17,8 @@ def menu_selector():
 
 menu_selector()
 
+# Just testing
+
 option = int(input("Ingresa una opcion: "))
 
 while option != 1 and option != 2 and option != 3 and option != 4:
