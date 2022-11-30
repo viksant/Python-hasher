@@ -17,7 +17,6 @@ def menu_selector():
 
 menu_selector()
 
-# Just testing
 
 option = int(input("Ingresa una opcion: "))
 
