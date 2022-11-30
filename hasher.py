@@ -39,9 +39,7 @@ def select_option(option):
 
             hash_select()
             option = int(input("Ingresa una opcion: "))
-            if option == 1:
-                print("Opcion incorrecta")
-                sys.exit(1)
+
             election = int(input("Elige un hash:"))
             if election == 1:
                 with open(file, "r") as f:
