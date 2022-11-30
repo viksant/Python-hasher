@@ -121,6 +121,8 @@ def select_option(option):
         elif eleccion == 7:
             sys.exit(1)
 
+    elif option == 4:
+        sys.exit(1)
 
 if __name__ == "__main__":
     select_option(option)
