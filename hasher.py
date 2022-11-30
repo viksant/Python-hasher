@@ -19,6 +19,9 @@ menu_selector()
 
 option = int(input("Ingresa una opcion: "))
 
+while option != 1 and option != 2 and option != 3 and option != 4:
+    option = int(input("Ingresa una valida: "))
+
 def hash_select():
     data = [[1, 'MD5', 0, '8743b52063cd84097a65d1633f5c74f5'],
             [2, 'SHA1', 100, 'b89eaac7e61417341b710b727768294d0e6a277b'],
