@@ -17,6 +17,7 @@ def menu_selector():
 menu_selector()
 
 option = int(input("Ingresa una opcion: "))
+
 def hash_select():
     print("1) MD5")
     print("2) SHA1")
@@ -29,17 +30,12 @@ def hash_select():
 def select_option(option):
     if option == 1:
         file = input("Ingresa el archivo: ")
-        isFile = os.path.isfile(file)
-
         while not os.path.exists(file):
             print("El archivo no existe, ingrese uno valido porfavor")
             file = input("Ingresa el archivo: ")
-
+            
         if os.path.isfile(file):
-
             hash_select()
-            option = int(input("Ingresa una opcion: "))
-
             election = int(input("Elige un hash:"))
             if election == 1:
                 with open(file, "r") as f:
