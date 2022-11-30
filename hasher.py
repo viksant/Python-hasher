@@ -47,6 +47,19 @@ def file_exists(prompt_str):
             continue
 
 
+numero_elegido = {
+    1: hashlib.md5,
+    2: hashlib.sha1,
+    3: hashlib.sha224,
+    4: hashlib.sha256,
+    5: hashlib.sha384,
+    6: hashlib.sha512,
+}
+
+def chose_hash(number):
+    if number in numero_elegido:
+        return numero_elegido[number]
+
 def select_option(option):
 
     if option == 1:
@@ -54,57 +67,31 @@ def select_option(option):
         if (archivo_existe):
             hash_select()
             election = int(input("\n Elige un hash:"))
+
             while election != 1 and election != 2 and election != 3 and election != 4 and election != 5 and election != 6:
                 election = int(input("Id incorrecto. Ingresa un Id válido: "))
-            if election == 1:
-                h=hashlib.md5
-            elif election == 2:
-                h=hashlib.sha1
-            elif election == 3:
-                h=hashlib.sha224
-            elif election == 4:
-                h=hashlib.sha256
-            elif election == 5:
-                h=hashlib.sha384
-            elif election == 6:
-                h=hashlib.sha512
-            elif election == 7:
-                print("Saliendo..")
-                sys.exit(1)
 
-            with open(archivo_existe, "r") as f:
-                for line in f:
-                    line = line.strip()
-                    encodeline = str.encode(line)
-                    lineHash = h(encodeline).hexdigest()
-                    print(line + " -> " + h(line.encode()).hexdigest())
+            hash = chose_hash(election)
+
+            if election in numero_elegido:
+                with open(archivo_existe, "r") as f:
+                    for line in f:
+                        line = line.strip()
+                        encodeline = str.encode(line)
+                        lineHash = hash(encodeline).hexdigest()
+                        print(line + " -> " + hash(line.encode()).hexdigest())
 
     elif option == 2:
         hash_select()
         election = int(input("\nElige un hash:"))
         while election != 1 and election != 2 and election != 3 and election != 4 and election != 5 and election != 6:
             election = int(input("Id incorrecto. Ingresa un Id válido: "))
-        if election == 1:
-            string = input("Ingresa la palabra a hashear: ")
-            print("El hash es: " + hashlib.md5(string.encode()).hexdigest())
-        elif election == 2:
-            string = input("Ingresa la palabra a hashear: ")
-            print("El hash es: " + hashlib.sha1(string.encode()).hexdigest())
-        elif election == 3:
-            string = input("Ingresa la palabra a hashear: ")
-            print("El hash es: " + hashlib.sha224(string.encode()).hexdigest())
-        elif election == 4:
-            string = input("Ingresa la palabra a hashear: ")
-            print("El hash es: " + hashlib.sha256(string.encode()).hexdigest())
-        elif election == 5:
-            string = input("Ingresa la palabra a hashear: ")
-            print("El hash es: " + hashlib.sha384(string.encode()).hexdigest())
-        elif election == 6:
-            string = input("Ingresa la palabra a hashear: ")
-            print("El hash es: " + hashlib.sha512(string.encode()).hexdigest())
-        elif election == 7:
-            print("Saliendo..")
-            sys.exit(1)
+
+        hash = chose_hash(election)
+
+        if election in numero_elegido:
+            palabra = input("Ingresa la palabra: ")
+            print(palabra + " -> " + hash(palabra.encode()).hexdigest())
         else:
             print("Opcion invalida")
             sys.exit(1)
@@ -118,6 +105,7 @@ def select_option(option):
                 election = int(input("Id incorrecto. Ingresa un Id válido: "))
             archivo = input("Ingrese el nombre del archivo de destino: ")
             f = open(archivo, "w")
+
             list = []
             n = int(input("Ingresa el numero de palabras: "))
             for i in range(0, n):
@@ -126,21 +114,9 @@ def select_option(option):
                 list.append(item)
 
             for palabra in list:
-                if election == 1:
-                    f.write(palabra + " -> " + hashlib.md5(palabra.encode()).hexdigest() + "\n")
-                elif election == 2:
-                    f.write(palabra + " -> " + hashlib.sha1(palabra.encode()).hexdigest() + "\n")
-                elif election == 3:
-                    f.write(palabra + " -> " + hashlib.sha224(palabra.encode()).hexdigest() + "\n")
-                elif election == 4:
-                    f.write(palabra + " -> " + hashlib.sha256(palabra.encode()).hexdigest() + "\n")
-                elif election == 5:
-                    f.write(palabra + " -> " + hashlib.sha384(palabra.encode()).hexdigest() + "\n")
-                elif election == 6:
-                    f.write(palabra + " -> " + hashlib.sha512(palabra.encode()).hexdigest() + "\n")
-                elif election == 7:
-                    print("Saliendo..")
-                    sys.exit(1)
+                hash = chose_hash(election)
+                if election in numero_elegido:
+                    f.write(palabra + " -> " + hash(palabra.encode()).hexdigest() + "\n")
         else:
             hash_select()
             election = int(input("\nElige un hash:"))
@@ -152,31 +128,12 @@ def select_option(option):
                 print("Ingresa la palabra a hashear", i + 1, ":")
                 item = input()
                 list.append(item)
-            if election == 1:
-                for i in list:
-                    print(i + " -> " + hashlib.md5(i.encode()).hexdigest())
-            elif election == 2:
-                for i in list:
-                    print(i + " -> " + hashlib.sha1(i.encode()).hexdigest())
-            elif election == 3:
-                for i in list:
-                    print(i + " -> " + hashlib.sha224(i.encode()).hexdigest())
-            elif election == 4:
-                for i in list:
-                    print(i + " -> " + hashlib.sha256(i.encode()).hexdigest())
-            elif election == 5:
-                for i in list:
-                    print(i + " -> " + hashlib.sha384(i.encode()).hexdigest())
-            elif election == 6:
-                for i in list:
-                    print(i + " -> " + hashlib.sha512(i.encode()).hexdigest())
-            elif election == 7:
-                print("Saliendo..")
-                sys.exit(1)
-            else:
-                print("Opcion invalida")
-                sys.exit(1)
 
+            for palabra in list:
+                hash = chose_hash(election)
+                if election in numero_elegido:
+                    print(palabra + " -> " + hash(palabra.encode()).hexdigest())
+           
     elif option == 4:
         print("Saliendo..")
         sys.exit(1)
