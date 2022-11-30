@@ -1,7 +1,7 @@
 # Python hash generator
 
 The project is still under development and I am aware that it can be optimized, new options can be added, etc. Therefore, I will update the repository as I implement significant changes.
-If you have an idea that you think may be interesting or any suggestions, I will be happy to read them. Discord: 𝑉𝐼𝐾𝑆𝑆𝐴𝑁𝑇#4536
+If you have an idea that you think may be interesting or any suggestions, I will be happy to read them. Discord: 𝑉𝐼𝐾𝑆𝐴𝑁𝑇#4536
 
 ## Spanish
 
