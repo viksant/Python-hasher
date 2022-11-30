@@ -27,51 +27,56 @@ def hash_select():
     print("6) SHA2-512")
     print("7) Salir")
 
+def file_exists(prompt_str):
+
+    while True:
+        filename = input("Ingresa el archivo, si no existe, se repetirá este mensaje: ")
+        try:
+            if os.path.isfile(filename):
+                return filename
+        except IOError:
+            print("El archivo no existe, ingrese uno valido porfavor")
+            continue
+
 def select_option(option):
     if option == 1:
-        file = input("Ingresa el archivo: ")
-        while not os.path.exists(file):
-            print("El archivo no existe, ingrese uno valido porfavor")
-            file = input("Ingresa el archivo: ")
-
-        if os.path.isfile(file):
+        archivo_existe = file_exists("Ingresa el archivo: ")
+        if (archivo_existe):
             hash_select()
             election = int(input("Elige un hash:"))
             if election == 1:
-                with open(file, "r") as f:
+                with open(archivo_existe, "r") as f:
                     for line in f:
                         line = line.strip()
                         print(line + " -> " + hashlib.md5(line.encode()).hexdigest())
             elif election == 2:
-                with open(file, "r") as f:
+                with open(archivo_existe, "r") as f:
                     for line in f:
                         line = line.strip()
                         print(line + " -> " + hashlib.sha1(line.encode()).hexdigest())
             elif election == 3:
-                with open(file, "r") as f:
+                with open(archivo_existe, "r") as f:
                     for line in f:
                         line = line.strip()
                         print(line + " -> " + hashlib.sha224(line.encode()).hexdigest())
             elif election == 4:
-                with open(file, "r") as f:
+                with open(archivo_existe, "r") as f:
                     for line in f:
                         line = line.strip()
                         print(line + " -> " + hashlib.sha256(line.encode()).hexdigest())
             elif election == 5:
-                with open(file, "r") as f:
+                with open(archivo_existe, "r") as f:
                     for line in f:
                         line = line.strip()
                         print(line + " -> " + hashlib.sha384(line.encode()).hexdigest())
             elif election == 6:
-                with open(file, "r") as f:
+                with open(archivo_existe, "r") as f:
                     for line in f:
                         line = line.strip()
                         print(line + " -> " + hashlib.sha512(line.encode()).hexdigest())
             elif election == 7:
+                print("Saliendo..")
                 sys.exit(1)
-        else:
-            print("El archivo no existe")
-            sys.exit(1)
 
     elif option == 2:
         hash_select()
@@ -95,6 +100,7 @@ def select_option(option):
             string = input("Ingresa el string: ")
             print("El hash es: " + hashlib.sha512(string.encode()).hexdigest())
         elif election == 7:
+            print("Saliendo..")
             sys.exit(1)
         else:
             print("Opcion invalida")
@@ -102,9 +108,9 @@ def select_option(option):
 
     elif option == 3:
         guardado_archivo=int(input("¿Desea guardar el resultado en un archivo? 1-Si 2-No: "))
-        hash_select()
 
         if guardado_archivo == 1:
+            hash_select()
             election = int(input("Elige un hash:"))
             archivo = input("Ingrese el nombre del archivo de destino: ")
             f = open(archivo, "w")
@@ -129,9 +135,11 @@ def select_option(option):
                 elif election == 6:
                     f.write(palabra + " -> " + hashlib.sha512(palabra.encode()).hexdigest() + "\n")
                 elif election == 7:
+                    print("Saliendo..")
                     sys.exit(1)
 
         else:
+            hash_select()
             election = int(input("Elige un hash:"))
             list = []
             n = int(input("Ingresa el numero de palabras: "))
@@ -159,13 +167,16 @@ def select_option(option):
                 for i in list:
                     print(i + " -> " + hashlib.sha512(i.encode()).hexdigest())
             elif election == 7:
+                print("Saliendo..")
                 sys.exit(1)
             else:
                 print("Opcion invalida")
                 sys.exit(1)
 
     elif option == 4:
+        print()
         sys.exit(1)
+
 
 if __name__ == "__main__":
     select_option(option)
