@@ -17,17 +17,19 @@ def menu_selector():
 menu_selector()
 
 option = int(input("Ingresa una opcion: "))
+def hash_select():
+    print("1) MD5")
+    print("2) SHA1")
+    print("3) SHA224")
+    print("4) SHA256")
+    print("5) SHA384")
+    print("6) SHA2-512")
+    print("7) Salir")
 
 def select_option(option):
     if option == 1:
         file = input("Ingresa el archivo: ")
-        print("1) MD5")
-        print("2) SHA1")
-        print("3) SHA224")
-        print("4) SHA256")
-        print("5) SHA384")
-        print("6) SHA2-512")
-        print("7) Salir")
+        hash_select()
         eleccion = int(input("Elige un hash:"))
         if eleccion == 1:
             with open(file, "r") as f:
@@ -63,13 +65,7 @@ def select_option(option):
             sys.exit(1)
 
     elif option == 2:
-        print("1) MD5")
-        print("2) SHA1")
-        print("3) SHA224")
-        print("4) SHA256")
-        print("5) SHA384")
-        print("6) SHA2-512")
-        print("7) Salir")
+        hash_select()
         eleccion = int(input("Elige un hash:"))
 
         if eleccion == 1:
@@ -94,13 +90,7 @@ def select_option(option):
             sys.exit(1)
 
     elif option == 3:
-        print("1) MD5")
-        print("2) SHA1")
-        print("3) SHA224")
-        print("4) SHA256")
-        print("5) SHA384")
-        print("6) SHA2-512")
-        print("7) Salir")
+        hash_select()
         eleccion = int(input("Elige un hash:"))
 
         list = []
