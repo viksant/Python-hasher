@@ -16,8 +16,6 @@ def menu_selector():
     print("")
 
 menu_selector()
-
-
 option = int(input("Ingresa una opcion: "))
 
 while option != 1 and option != 2 and option != 3 and option != 4:
@@ -47,7 +45,9 @@ def select_option(option):
         archivo_existe = file_exists("Ingresa el archivo: ")
         if (archivo_existe):
             hash_select()
-            election = int(input("Elige un hash:"))
+            election = int(input("\n Elige un hash:"))
+            while election != 1 and election != 2 and election != 3 and election != 4 and election != 5 and election != 6:
+                election = int(input("Id incorrecto. Ingresa un Id válido: "))
             if election == 1:
                 with open(archivo_existe, "r") as f:
                     for line in f:
@@ -84,24 +84,26 @@ def select_option(option):
 
     elif option == 2:
         hash_select()
-        election = int(input("Elige un hash:"))
+        election = int(input("\nElige un hash:"))
+        while election != 1 and election != 2 and election != 3 and election != 4 and election != 5 and election != 6:
+            election = int(input("Id incorrecto. Ingresa un Id válido: "))
         if election == 1:
-            string = input("Ingresa el string: ")
+            string = input("Ingresa la palabra a hashear: ")
             print("El hash es: " + hashlib.md5(string.encode()).hexdigest())
         elif election == 2:
-            string = input("Ingresa el string: ")
+            string = input("Ingresa la palabra a hashear: ")
             print("El hash es: " + hashlib.sha1(string.encode()).hexdigest())
         elif election == 3:
-            string = input("Ingresa el string: ")
+            string = input("Ingresa la palabra a hashear: ")
             print("El hash es: " + hashlib.sha224(string.encode()).hexdigest())
         elif election == 4:
-            string = input("Ingresa el string: ")
+            string = input("Ingresa la palabra a hashear: ")
             print("El hash es: " + hashlib.sha256(string.encode()).hexdigest())
         elif election == 5:
-            string = input("Ingresa el string: ")
+            string = input("Ingresa la palabra a hashear: ")
             print("El hash es: " + hashlib.sha384(string.encode()).hexdigest())
         elif election == 6:
-            string = input("Ingresa el string: ")
+            string = input("Ingresa la palabra a hashear: ")
             print("El hash es: " + hashlib.sha512(string.encode()).hexdigest())
         elif election == 7:
             print("Saliendo..")
@@ -115,13 +117,15 @@ def select_option(option):
 
         if guardado_archivo == 1:
             hash_select()
-            election = int(input("Elige un hash:"))
+            election = int(input("\nElige un hash:"))
+            while election != 1 and election != 2 and election != 3 and election != 4 and election != 5 and election != 6:
+                election = int(input("Id incorrecto. Ingresa un Id válido: "))
             archivo = input("Ingrese el nombre del archivo de destino: ")
             f = open(archivo, "w")
             list = []
             n = int(input("Ingresa el numero de palabras: "))
             for i in range(0, n):
-                print("Ingresa la palabra", i + 1, ":")
+                print("Ingresa la palabra a hashear", i + 1, ":")
                 item = input()
                 list.append(item)
 
@@ -144,11 +148,13 @@ def select_option(option):
 
         else:
             hash_select()
-            election = int(input("Elige un hash:"))
+            election = int(input("\nElige un hash:"))
+            while election != 1 and election != 2 and election != 3 and election != 4 and election != 5 and election != 6:
+                election = int(input("Id incorrecto. Ingresa un Id válido: "))
             list = []
             n = int(input("Ingresa el numero de palabras: "))
             for i in range(0, n):
-                print("Ingresa la palabra", i + 1, ":")
+                print("Ingresa la palabra a hashear", i + 1, ":")
                 item = input()
                 list.append(item)
 
@@ -178,7 +184,7 @@ def select_option(option):
                 sys.exit(1)
 
     elif option == 4:
-        print()
+        print("Saliendo..")
         sys.exit(1)
 
 
