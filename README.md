@@ -6,9 +6,7 @@ If you have an idea that you think may be interesting or any suggestions, I will
 ## Spanish
 
 Para ejecutar el script, simplemente usamos el siguiente comando:
-python3 <script> 
-
-e introducimos los datos que se nos vayan pidiendo.
+python3 <script> e introducimos los datos que se nos vayan pidiendo.
 
 ## English
 
