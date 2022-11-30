@@ -1,5 +1,6 @@
 import os
 import hashlib, signal, pdb, sys, base64, time, os.path
+from tabulate import tabulate
 
 def def_handler(sig, frame):
     print("\n\n [!] Saliendo.. ")
@@ -19,16 +20,15 @@ menu_selector()
 option = int(input("Ingresa una opcion: "))
 
 def hash_select():
-    print("1) MD5")
-    print("2) SHA1")
-    print("3) SHA224")
-    print("4) SHA256")
-    print("5) SHA384")
-    print("6) SHA2-512")
-    print("7) Salir")
+    data = [[1, 'MD5', 0, '8743b52063cd84097a65d1633f5c74f5'],
+            [2, 'SHA1', 100, 'b89eaac7e61417341b710b727768294d0e6a277b'],
+            [3, 'SHA2-224', 1300, 'e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198'],
+            [4, 'SHA2-256', 1400, '127e6fbfe24a750e72930c220a8e138275656b8e5d8f48a98c3c92df2caba935'],
+            [5, 'SHA2-384', 10800,'07371af1ca1fca7c6941d2399f3610f1e392c56c6d73fddffe38f18c430a2817028dae1ef09ac683b62148a2c8757f42'],
+            [6, 'SHA2-512', 1700,'82a9dda829eb7f8ffe9fbe49e45d47d2dad9664fbb7adf72492e3c81ebd3e29134d9bc12212bf83c6840f10e8246b9db54a4859b7ccd0123d86e5872c1e5082f']]
+    print(tabulate(data, headers=["Id", "Hash", "Hash mode", "Example"]))
 
 def file_exists(prompt_str):
-
     while True:
         filename = input("Ingresa el archivo, si no existe, se repetirá este mensaje: ")
         try:
@@ -180,4 +180,3 @@ def select_option(option):
 
 if __name__ == "__main__":
     select_option(option)
-    #codigo
