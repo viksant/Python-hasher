@@ -9,7 +9,7 @@ If you have an idea that you think may be interesting or any suggestions, I will
 Para ejecutar el script , simplemente usamos el siguiente comando:
 python3 <script> e introducimos los datos que se nos vayan pidiendo.
 
-### Hash Cracker
+#### Hash Cracker
 Al igual que en el caso anterior, pero esta vez le tenemos que pasar 3 parámetros:
 -m <mode> en formato texto, como por ejemplo md5
 -c "hash" incluyendo las comillas dobles
