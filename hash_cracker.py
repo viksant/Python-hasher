@@ -1,9 +1,12 @@
 import os, io, getopt, hashlib, sys, os, time, argparse, signal
 from pwn import *
 
+
 def def_handler(sig, frame):
     print("\n\n [!] Saliendo.. ")
     sys.exit(1)
+
+#selection = int(input("\n Elige que desea desencriptar:" + "\n 1) Una palabra" + "\n 2) Un archivo" "\n 3) Salir" + "\n\n Ingresa una opcion: "))
 
 signal.signal(signal.SIGINT, def_handler)
 
@@ -16,6 +19,7 @@ parser.add_argument('-c', '--hash', type=str,  help='Hash to crack', required=Tr
 parser.add_argument('-w', '--wordlist', type=str, help='Wordlist to use', required=True)
 parser.add_argument('-m', '--mode', type=str, help='Hash mode', required=True)
 args = parser.parse_args()
+
 
 def hash_cracker(hash, mode, wordlist):
     with open(args.wordlist, "r", encoding="latin-1") as f:
@@ -40,13 +44,10 @@ def hash_cracker(hash, mode, wordlist):
             encodeline=str.encode(line)
             lineHash = h(encodeline).hexdigest()
             if lineHash == args.hash:
-                print("Hash cracked: " + line)
+                with open ("recent", "a+") as f:
+                    print("Hash cracked: " + line)
+                    f.write(line +":" + args.hash + " (" + args.mode+")" + "\n")
                 sys.exit(1)
 
-
-
 if __name__ == "__main__":
-    hash = sys.argv[1]
-    mode = sys.argv[2]
-    wordlist = sys.argv[3]
-    hash_cracker(hash, mode, wordlist)
+    hash_cracker(args.hash, args.mode, args.wordlist)
