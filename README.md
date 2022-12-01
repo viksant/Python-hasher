@@ -3,6 +3,11 @@
 The project is still under development and I am aware that it can be optimized, new options can be added, etc. Therefore, I will update the repository as I implement significant changes.
 If you have an idea that you think may be interesting or any suggestions, I will be happy to read them. Discord: 𝑉𝐼𝐾𝑆𝐴𝑁𝑇#4536
 
+--------------------------------------------------
+
+El proyecto está todavía en desarrollo y soy consciente de que puede ser optimizado, se pueden añadir nuevas opciones, etc. Por ello, iré actualizando el repositorio a medida que vaya implementando cambios significativos.
+Si tienes alguna idea que te parezca interesante o alguna sugerencia, estaré encantado de leerla. Discord: 𝑉𝐼𝐾𝑆𝐴𝑁𝑇#4536
+
 ## Spanish
 
 #### Hash Generator
